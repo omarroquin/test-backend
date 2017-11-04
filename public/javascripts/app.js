@@ -2046,8 +2046,9 @@ form.addEventListener('submit', function (ev) {
     request.post('/api/processData').send(fd).set('Content-Type', undefined).set('enctype', 'multipart/form-data').end(function (err, res) {
       if (err) console.log(err);else {
         var container = document.getElementById('results');
-        container.className = '';
+
         element.className = 'hide';
+        container.innerHTML = '<span>Output:</span><br>';
         res.body.data.forEach(function (i) {
           container.innerHTML += '<li>' + i + '</li>';
         });

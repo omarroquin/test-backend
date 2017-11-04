@@ -26,7 +26,6 @@ const processData = input => {
         }
       }
 
-
     } catch (err) {
       const functionError = new EvalError()
       functionError.message = err.message
@@ -40,7 +39,6 @@ const processData = input => {
 
 class MatrixBlock {
   constructor() {
-    // Definition Matrix 3-D
     this.queries = []
   }
 

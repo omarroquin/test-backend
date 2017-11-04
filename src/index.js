@@ -22,8 +22,9 @@ form.addEventListener('submit', (ev) => {
         if (err) console.log(err)
         else {
           let container = document.getElementById('results')
-          container.className = ''
+
           element.className = 'hide'
+          container.innerHTML = '<span>Output:</span><br>'
           res.body.data.forEach(i => {
             container.innerHTML += '<li>' + i + '</li>'
           })
