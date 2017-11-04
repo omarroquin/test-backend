@@ -4,13 +4,14 @@ let form = document.getElementById('form-data')
 
 form.addEventListener('submit', (ev) => {
   ev.preventDefault()
+  let file = ev.target['input-file'].files[0]
 
-  if (ev.target['input-file'].files[0].type == 'text/plain') {
+  if (file && (file.type === 'text/plain')) {
     let element = document.getElementById('loading')
-    element.className = ''
+    let fd = new FormData()
 
-    let fd = new FormData();
-    fd.append('file', ev.target['input-file'].files[0]);
+    element.className = ''
+    fd.append('file', file)
 
     request
       .post('/api/challenge')
@@ -20,10 +21,13 @@ form.addEventListener('submit', (ev) => {
       .end((err, res) => {
         if (err) console.log(err)
         else {
+          let container = document.getElementById('results')
+          container.className = ''
           element.className = 'hide'
-          console.log(res);
+          res.body.data.forEach(i => {
+            container.innerHTML += '<li>' + i + '</li>'
+          })
         }
       })
-
   }
 })

@@ -6,7 +6,7 @@ const challenge = require('../methods/challenge')
 /* POST input data */
 router.post('/challenge', (req, res) => {
   let inputFile = req.files.file
-  let inputPath = 'public/uploads/input.txt'
+  let inputPath = 'uploads/input.txt'
 
   // Use the mv() method to place the file somewhere on your server
   inputFile.mv(inputPath, err => {

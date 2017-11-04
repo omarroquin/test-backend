@@ -2034,18 +2034,23 @@ var form = document.getElementById('form-data');
 
 form.addEventListener('submit', function (ev) {
   ev.preventDefault();
+  var file = ev.target['input-file'].files[0];
 
-  if (ev.target['input-file'].files[0].type == 'text/plain') {
+  if (file && file.type === 'text/plain') {
     var element = document.getElementById('loading');
-    element.className = '';
-
     var fd = new FormData();
-    fd.append('file', ev.target['input-file'].files[0]);
+
+    element.className = '';
+    fd.append('file', file);
 
     request.post('/api/challenge').send(fd).set('Content-Type', undefined).set('enctype', 'multipart/form-data').end(function (err, res) {
       if (err) console.log(err);else {
+        var container = document.getElementById('results');
+        container.className = '';
         element.className = 'hide';
-        console.log(res);
+        res.body.data.forEach(function (i) {
+          container.innerHTML += '<li>' + i + '</li>';
+        });
       }
     });
   }

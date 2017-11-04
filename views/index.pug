@@ -6,15 +6,23 @@ block content
   
   br 
   br
-  
-  form(id = 'form-data')
-    label(for = 'input-file') Input File: 
-    input(type = 'file' name = 'input-file')
+
+  form(id='form-data')
+    label(for='input-file') Input File: 
+    input(type='file' name='input-file')
     br
-    input(type = 'submit' value = 'Submit')
+    input(type='submit' value='Submit')
+
+  div(id='loading' class='hide')
+    img(src='/images/loading.gif' height='100px')
+  
+  br
+  br
       
-  div(id = 'loading' class = 'hide')
-    img(src = '/images/loading.gif' height = '100px')
+  div(id='results' class='hide')
+    span Output:
+    br
+  
   
   script(type='application/javascript' src='javascripts/app.js')
   

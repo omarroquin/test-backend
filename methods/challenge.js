@@ -2,7 +2,7 @@ const challenge = {
   processData: input => {
     return new Promise((resolve, reject) => {
       let queries = []
-      let index = 1;
+      let index = 1
       try {
         input = input.split('\n')
 
@@ -29,7 +29,10 @@ const challenge = {
           }
         }
       } catch (err) {
-        reject(err)
+        const functionError = new EvalError()
+        functionError.message = err.message
+        functionError.stack = err.stack
+        reject(functionError)
       } finally {
         resolve(queries)
       }

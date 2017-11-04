@@ -5,12 +5,12 @@ const browserify = require('browserify')
 const source = require('vinyl-source-stream')
 const watchify = require('watchify')
 
-function compile(watch) {
+function compile (watch) {
   var bundle = watchify(browserify('./src/index.js'))
 
-  function rebundle() {
+  function rebundle () {
     bundle
-      .transform(babel, {presets: ["es2015"]})
+      .transform(babel, {presets: ['es2015']})
       .bundle()
       .pipe(source('index.js'))
       .pipe(rename('app.js'))
@@ -28,11 +28,11 @@ function compile(watch) {
 }
 
 gulp.task('build', function () {
-  return compile();
+  return compile()
 })
 
 gulp.task('watch', function () {
-  return compile(true);
+  return compile(true)
 })
 
 gulp.task('default', ['build'])
