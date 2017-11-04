@@ -2043,7 +2043,7 @@ form.addEventListener('submit', function (ev) {
     element.className = '';
     fd.append('file', file);
 
-    request.post('/api/challenge').send(fd).set('Content-Type', undefined).set('enctype', 'multipart/form-data').end(function (err, res) {
+    request.post('/api/processData').send(fd).set('Content-Type', undefined).set('enctype', 'multipart/form-data').end(function (err, res) {
       if (err) console.log(err);else {
         var container = document.getElementById('results');
         container.className = '';

@@ -14,7 +14,7 @@ form.addEventListener('submit', (ev) => {
     fd.append('file', file)
 
     request
-      .post('/api/challenge')
+      .post('/api/processData')
       .send(fd)
       .set('Content-Type', undefined)
       .set('enctype', 'multipart/form-data')

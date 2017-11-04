@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const fs = require('fs')
-const challenge = require('../methods/challenge')
+const processData = require('../methods/processData')
 
 /* POST input data */
-router.post('/challenge', (req, res) => {
+router.post('/processData', (req, res) => {
   let inputFile = req.files.file
   let inputPath = 'uploads/input.txt'
 
@@ -15,7 +15,7 @@ router.post('/challenge', (req, res) => {
     fs.readFile(inputPath, 'utf8', (err, data) => {
       if (err) res.status(500).send(err)
 
-      challenge.processData(data)
+      processData(data)
         .then(response => {
           res.status(200).send({data: response})
         }).catch(err => {
